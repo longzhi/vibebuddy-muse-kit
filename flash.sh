@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Flash Muse next to Vibe Buddy on a box, over the USB-SLAVE port (README.md). Vibe Buddy, its Character, its
-# settings and its pairings stay. Build Muse first with ./build.sh. Quit the Vibe Buddy app first: it holds the port.
+# Flash Muse next to VibeBuddy on a box, over the USB-SLAVE port (README.md). VibeBuddy, its Character, its
+# settings and its pairings stay. Build Muse first with ./build.sh. Quit the VibeBuddy app first: it holds the port.
 #
-#   ./flash.sh <Vibe Buddy firmware zip> <port> [sdk token]
+#   ./flash.sh <VibeBuddy firmware zip> <port> [sdk token]
 #
-# The firmware zip is a Vibe Buddy firmware release (VibeBuddy-firmware-v0.6.2.zip or later). Its bootloader reads
+# The firmware zip is a VibeBuddy firmware release (VibeBuddy-firmware-v0.6.2.zip or later). Its bootloader reads
 # boot_sel, and its partition table has the Muse partitions; a box flashed before them has neither.
 # Without a token it only flashes; send the token later with ./send-token.py <port> <token>.
 set -euo pipefail
 
-firmware="${1:?usage: ./flash.sh <Vibe Buddy firmware zip> <port> [sdk token]}"
-port="${2:?usage: ./flash.sh <Vibe Buddy firmware zip> <port> [sdk token]}"
+firmware="${1:?usage: ./flash.sh <VibeBuddy firmware zip> <port> [sdk token]}"
+port="${2:?usage: ./flash.sh <VibeBuddy firmware zip> <port> [sdk token]}"
 token="${3:-}"
 here="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 build="${here}/build"
@@ -20,7 +20,7 @@ vibebuddy="${build}/vibebuddy"
 rm -rf "${vibebuddy}"
 mkdir -p "${vibebuddy}"
 unzip -q -o "${firmware}" bootloader.bin partition-table.bin -d "${vibebuddy}" \
-    || { echo "${firmware}: not a Vibe Buddy firmware zip" >&2; exit 1; }
+    || { echo "${firmware}: not a VibeBuddy firmware zip" >&2; exit 1; }
 
 export IDF_PATH="${IDF_PATH:-${HOME}/esp/esp-idf-v6.0.3}"
 # shellcheck disable=SC1091

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Build Meta's Muse Gadget firmware for a Vibe Buddy box, to live next to Vibe Buddy (README.md).
+# Build Meta's Muse Gadget firmware for a VibeBuddy box, to live next to VibeBuddy (README.md).
 # The source is the official SDK, unchanged: this only adds sdkconfig.vibebuddy, which moves Muse in flash.
 #
 #   ./build.sh <path to a muse-gadget-sdk checkout>
